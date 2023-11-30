@@ -1,0 +1,8 @@
+presidio_analyzer
+presidio_anonymizer
+streamlit
+matplotlib
+langdetect
+pyperclip
+tabulate
+spacy
