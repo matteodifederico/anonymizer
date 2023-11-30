@@ -3,7 +3,6 @@ from presidio_anonymizer import AnonymizerEngine
 from presidio_analyzer.nlp_engine import NlpEngineProvider
 from langdetect import detect
 import matplotlib.pyplot as plt
-from annotated_text import annotated_text
 import pyperclip
 import streamlit as st
 import spacy.cli
@@ -43,17 +42,9 @@ if text:
     if analyzer_results:
         anonymized_results = anonymizer.anonymize(text=text, analyzer_results=analyzer_results)
         anonymize_result_text = anonymized_results.text
-        #annotated_result_text = []
         for entity in analyzer_results:
             entity_plaholder = "#" * (entity.end - entity.start)
             anonymize_result_text = anonymize_result_text.replace(f"<{entity.entity_type}>", entity_plaholder)
-
-            #annotated_text = anonymized_results.text.split("<{entity.entity_type}>")
-            #annotated_result_text = annotated_result_text.append(annotated_text[0])
-            #annotated_result_text = annotated_result_text.append((entity_plaholder, entity.entity_type))
-
-
-        #annotated_text(annotated_result_text)
         st.text_area("Anonymized text", anonymize_result_text)
         copy_button = st.button('Copy to clipboard')
         if copy_button:
@@ -66,7 +57,6 @@ if text:
             count_entities = {i:entities_type.count(i) for i in entities_type}
             plt.pie(count_entities.values(), labels=count_entities.keys(), autopct='%1.1f%%', shadow=False, startangle=20)
             plt.axis('equal')
-            #create two columns
             col1, col2 = st.columns(2)
             container = st.container()
             with container:
