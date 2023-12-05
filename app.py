@@ -16,15 +16,15 @@ nlp_engine_multi_language = provider.create_engine()
 try:
     spacy.load("en_core_web_lg")
     spacy.load("it_core_news_lg")
-    #spacy.load("de_core_news_md")
-    #spacy.load("es_core_news_md")
-    #spacy.load("fr_core_news_sm")
+    spacy.load("de_core_news_md")
+    spacy.load("es_core_news_md")
+    spacy.load("fr_core_news_sm")
 except:
     spacy.cli.download("en_core_web_lg")
     spacy.cli.download("it_core_news_lg")
-    #spacy.cli.download("de_core_news_md")
-    #spacy.cli.download("es_core_news_md")
-    #spacy.cli.download("fr_core_news_sm")
+    spacy.cli.download("de_core_news_md")
+    spacy.cli.download("es_core_news_md")
+    spacy.cli.download("fr_core_news_sm")
 
 presidio_supported_languages = ["en", "it"]
 
